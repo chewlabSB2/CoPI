@@ -76,19 +76,6 @@ def update_qual2(qual):
 	qual = [chr(math.floor(qual[i]/qual_sum) + 33) for i in range(len(qual))]
 
 	return qual
-'''
-
-def update_qual2(qual, tab=errs_tab(128)):
-	q_updated = []
-	for i, qu in enumerate(qual):
-		qu = [tab[ord(q) - 33] * qu.c for q in qu.q]
-		q_updated.append(qu)
-
-	qual_sum = sum([q.c for q in qual])
-	qual = [sum(x) for x in zip(*q_updated)]
-	qual = [chr(round(-10 * math.log((qual[i])/(qual_sum)))) for i in range(len(qual))]
-	return qual, qual_sum
-'''
 
 def encode_DNA(seq):    
 	code = 0
@@ -146,47 +133,6 @@ def readfq(fp, gzipped = True): # this is a generator function
 			if last: # reach EOF before reading enough quality
 				yield (name, seq, None) # yield a fasta record instead
 				break
-
-def __sequence_plot(prefix, count_dict, length):
-	pass
-
-
-
-
-
-def plot_phred_score(line_dict, insert_List, prefix='Qscore', write = False, ax=None):
-	#https://dmnfarrell.github.io/python/fastq-quality-python
-	res = []
-	if write: write_file = open(prefix + '_insertid.log', 'w')
-	for k, v in line_dict.items():
-		if k in insert_List:
-			res.append(v[2])
-			if write: write_file.write(f'{k}\n')
-	if write: write_file.close()
-	df = pd.DataFrame(res)
-	l = len(df.T)+1
-
-	plt.switch_backend('agg')
-	plt.figure(dpi=360)
-	if ax==None:
-		f,ax=plt.subplots(figsize=(12,5))
-	rect = patches.Rectangle((0,0),l,20,linewidth=0,facecolor='r',alpha=.4)
-	ax.add_patch(rect)
-	rect = patches.Rectangle((0,20),l,8,linewidth=0,facecolor='yellow',alpha=.4)
-	ax.add_patch(rect)
-	rect = patches.Rectangle((0,28),l,12,linewidth=0,facecolor='g',alpha=.4)
-	ax.add_patch(rect)
-	df.mean().plot(ax=ax,c='black')
-	boxprops = dict(linestyle='-', linewidth=1, color='black')
-	df.plot(kind='box', ax=ax, grid=False, showfliers=False,
-			color=dict(boxes='black',whiskers='black')  )
-	ax.set_xticks(np.arange(0, l, 5))
-	ax.set_xticklabels(np.arange(0, l, 5))
-	ax.set_xlabel('position(bp)')
-	ax.set_xlim((0,l))
-	ax.set_ylim((0,40))
-	ax.set_title('per base sequence quality')   
-	plt.savefig(f'{prefix}-Insert_Qscore.png', dpi = 360)  
 
 def is_tool(name):
 	## Check whether `name` is on PATH and marked as executable.
