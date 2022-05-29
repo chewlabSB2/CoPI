@@ -786,7 +786,7 @@ def searchVariant(para):
                     lcList.append(value)
             
             logger.debug(f"Number of Low Count Variants: {len(lcList)}")
-            updateDct = multiCollapse(para, hcDict, lcList)
+            updateDct = multiCollapse(para, hcDict, lcList, logger)
 
             for ku, vu in updateDct.items():
                 hcDict[ku].tot_c += vu

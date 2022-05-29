@@ -137,7 +137,7 @@ def _add_hit(tmpDict, hit, count, t = True):
 	return tmpDict
 
 aa_hc = namedtuple('aa_hc', 'seq count')
-def processCollapse(para, hcDict, lcList, queue, lock, mm = 1):
+def processCollapse(para, hcDict, lcList, queue, lock, logger, mm = 1):
 
 	def check_alive(queue):
         queued = False
@@ -168,7 +168,7 @@ def processCollapse(para, hcDict, lcList, queue, lock, mm = 1):
 	aa_len = length//3
 	for checking, qV in enumerate(lcList):
 		check_alive(queue)
-		if checking%50 == 0: print(f"Checking iteration {checking}")
+		if checking%50 == 0: logger.debug(f"Checking iteration {checking}")
 		for q, v in qV.seq_C.items():
 			q = decode_DNA(q, length)
 			if length > KLEN:
@@ -200,7 +200,7 @@ def processCollapse(para, hcDict, lcList, queue, lock, mm = 1):
 				else: 
 					_write_anomaly(para.prefix, lock, q, v, "Unsure")
 
-	print ("Completed")
+	logger.debug("Completed")
 	queue.put([aa_hc(k, v) for k,v in updateDict.items()])			
 
 def queueCollapse(queue, hcList):
@@ -226,7 +226,7 @@ def ranges(N, nb):
 	for i in temp_list: 
 		yield (i[0],i[1])
 
-def multiCollapse(para, hcDict, lcList):
+def multiCollapse(para, hcDict, lcList, logger):
 	queue = mp.Queue()
 	manager = mp.Manager()
 	lock = mp.Lock()
@@ -236,7 +236,7 @@ def multiCollapse(para, hcDict, lcList):
 	for no, i in enumerate(ranges(len(lcList), para.threads)):
 		lcListPartitioned = lcList[i[0]:i[1]]
 		#para, length, hcDict, lcList, queue, lock
-		pp = mp.Process(target = processCollapse, args = (para, hcDict, lcListPartitioned, queue, lock))
+		pp = mp.Process(target = processCollapse, args = (para, hcDict, lcListPartitioned, queue, lock, logger))
 		current_processes.append(pp)
 
 	for pp in current_processes:
