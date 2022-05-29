@@ -46,6 +46,8 @@ Brief Explaination of each parameters:
 
 When choosing flanking anchors, it is recommended to leave 6bp (2AAs) between the anchors. 
 
+If you have two unpaired set of reads, create a new line with unpaired=<>.
+
 Expected Output
 ---------------
 1. Summary of Analysis
