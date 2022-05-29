@@ -1,4 +1,4 @@
-# Counting Peptide Variants (CoPI)
+# Counting Peptide Inserts (CoPI)
 
 Counting Peptide Inserts (CoPI) is a simple text-based search and analysis program which does quality filtering and counts the occurrences of peptide inserts in a NGS dataset for any protein engineering (eg. Directed Evolution). CoPI is written in Python 3.0 and executable on Windows or Linux platforms.
 
@@ -33,6 +33,7 @@ Brief Explaination of each parameters:
 | anchor2 | Flanking Sequences (9bp) |
 | read1 | Paired-Ends Read1 (Fastq) |
 | read2 | Paired-Ends Read2 (Fastq) |
+| unpaired | Unpaired Reads (List of Fastq) |
 | paired | Read1 and Read2 are paired ends (Default: True) |
 | merge | Option to merge paired ends (Default: True) |
 | prefix | Prefix of Output |
