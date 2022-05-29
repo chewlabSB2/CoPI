@@ -1,0 +1,16 @@
+*****************************************************
+Summary for .\tmp\test-unpaired-1.fastq.gz and .\tmp\test-unpaired-2.fastq.gz
+Number of Reads with Correct Anchors    : 2703
+Number of Reads with MM Anchors         : 531
+Number of Reads with 1 Indels Reads     : 32
+Number of Reads with Wrong Reads        : 44973
+*****************************************************
+*****************************************************
+Summary for .\tmp\test-merged.fastq.gz
+Number of Reads with Correct Anchors    : 450444
+Number of Reads with MM Anchors         : 2546
+Number of Reads with Correct Start Read : 1418
+Number of Reads with Correct End Read   : 2491
+Number of Reads with 1 Indels Reads     : 4676
+Number of Reads with Wrong Reads        : 174564
+*****************************************************
