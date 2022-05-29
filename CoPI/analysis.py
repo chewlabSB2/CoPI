@@ -625,6 +625,7 @@ def write_output(para, aa_dict, number_of_fastq, collapsed = False):
         for k, v in total.items():
             f.write(f"{k},{','.join([str(i) for i in v])}\n")
 
+'''
 def _pre_sequence_logo(para, aa_dict, thres = 50, collapsed = True):
     aa = list(set(list(table.values())))
     aa.sort()
@@ -639,7 +640,7 @@ def _pre_sequence_logo(para, aa_dict, thres = 50, collapsed = True):
 
         logodata = LogoData.from_counts(v)
         
-        '''
+    
         temp = {b:{a:0 for a in aa} for b in range(para.indel_range + 2)}
         for c, (seq, v1) in enumerate(v.items()):
             temp_total = v1.tot_c if collapsed else sum([i.tot_c for i in v1])
@@ -649,9 +650,9 @@ def _pre_sequence_logo(para, aa_dict, thres = 50, collapsed = True):
             
         temp = {k:v for k,v in temp.items() if sum(v.values()) > 0}
         temp = np.array([[temp[pos][aa] for key in aa] for pos in range(length)]).T
-        '''
+        
         __sequence_plot(para.prefix, temp, length)
-
+'''
 
 def __plot_heatmap(para, pos_dict, aa, length):
     quantity_2D = []
@@ -832,57 +833,3 @@ def main():
 
 if __name__== "__main__":
     main()
-
-
-'''
-def get_parameters():
-    ID = 'SCRAMBLER'
-    ref_seq = 'GGACATTGAAAAGGTCATGATTACAGACGAAGAGGAAATCAGGACAACCAATCCCGTGGCTACGGAGCAGTATGGTTCTGTAtctACCAACCTCCAGAGAGGCAACAGACAAGCAGCTACCGCAGATGTCAACACACAAGGCGTTCTTCCAGGCATGGTCTGG'
-    seq_start = "CAGAGAGGC" #'AGAGCAGCAGCACA' # 14 nt after the first nt.
-    seq_end = "CAAGCAGCT" #'GACCCTGCGACCGG' # last 15 nt
-    interest = "TEST" #'Heart'#
-    read1 = "AmineAAV1-upaired-1.fastq.gz"
-    read2 = "AmineAAV1-upaired-2.fastq.gz"
-    merged = "AmineAAV1-merged.fastq.gz"
-
-    return Parameters(ref_seq, seq_start,seq_end, read1, read2, merge = False, readMerged = merged)
-
-
-def get_toml(args):
-    pass
-
-def fastp_process(para):
-    pass
-
-DESCRIPTION  = 
-
-def get_args():
-    parser = argparse.ArgumentParser(
-        prog = 'Capture AAV Potential Inserts (CAPI)',
-        description = DESCRIPTION
-    )
-    parser.add_argument('-t', '--toml', dest = 'toml', #required=True,
-                        help="Parameters of Analysis in TOML format")
-    parser.add_argument('-d', '--debug',
-                        help='Print lots of debugging statements',
-                        action="store_const",dest="loglevel",const=logging.DEBUG,
-                        default=logging.INFO)
-
-    args = parser.parse_args()
-    return args
-
-def main():
-    args = get_args()
-    para = get_parameters() #get_toml(args)
-    start_time = time.time()
-    logging.basicConfig(level=args.loglevel, format=FORMAT)
-    logger.info(f"Analysis Started!")
-    logger.info(f"Have you drank your C(K)opi?")
-
-    if para.merge: fastp_process(para)
-    searchVariant(para)
-
-    end_time = time.time()
-    total_time = round(end_time - start_time,3)
-    logger.info(f"Analysis Ended! in {total_time} seconds!")
-'''
