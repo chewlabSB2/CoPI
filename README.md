@@ -22,7 +22,7 @@ CoPI --parameters sample.config -d
 Config File
 -----------
 
-A sample of the config file could be found [here](https://github.com/chewlabSB2/CoPI/sample.config).
+A sample of the config file could be found [here](https://github.com/chewlabSB2/CoPI/blob/main/sample.config).
 
 Brief Explaination of each parameters:
 
