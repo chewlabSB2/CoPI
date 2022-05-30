@@ -240,6 +240,7 @@ def multiCollapse(para, hcDict, lcList, logger):
     for no, i in enumerate(ranges(len(lcList), para.threads)):
         lcListPartitioned = lcList[i[0]:i[1]]
         #para, length, hcDict, lcList, queue, lock
+        logger.debug(f"CPU {no} will process {len(lcListPartitioned)} variants")
         pp = mp.Process(target = processCollapse, args = (para, hcDict, lcListPartitioned, queue, lock, logger))
         current_processes.append(pp)
 
@@ -257,7 +258,7 @@ def multiCollapse(para, hcDict, lcList, logger):
     queue.put('Done')
     sink.join()
 
-    print ("Multi Completed")
+    logger.debug("Multi Completed")
     return {a.seq:a.count for a in list(hcList)}
 
 ##-------------------------------------------------------------------------------------------------
