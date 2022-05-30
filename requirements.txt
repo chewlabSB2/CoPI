@@ -3,5 +3,4 @@ numpy
 biopython
 bitarray
 recordclass
-gzip
 pathlib
