@@ -6,6 +6,7 @@ import warnings
 import logging
 import logging.handlers
 import sys
+from CoPI.utils import *
 
 THRESHOLD = 50
 THREADS = 2
