@@ -8,6 +8,10 @@ import sys
 
 KLEN = 6
 
+import ctypes
+alive = mp.Value(ctypes.c_bool, lock=False)
+alive.value = True
+
 def create4MerList():
     import itertools
     perm3mer = [''.join(p) for p in itertools.product(DECODING_LST, repeat=KLEN)]
