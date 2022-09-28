@@ -724,7 +724,7 @@ def searchVariant(para):
     para._calculate_number_fastq() 
 
     aa_dict    = {i:{} for i in range(0, INDEL_RANGE)}
-    indel_dict = {i:0  for i in range(0, INDEL_RANGE*3)}
+    indel_dict = {i:0  for i in range(0, INDEL_RANGE*3 + 1)}
     checked    = False
     reverse    = 0
     count      = 0
