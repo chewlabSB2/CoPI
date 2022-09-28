@@ -11,6 +11,7 @@ logging.getLogger('matplotlib').setLevel(logging.WARNING)
 import matplotlib.pyplot as plt
 from matplotlib.colors import LogNorm
 from collections import namedtuple
+import textwrap
 
 table = {
     'ATA':'I', 'ATC':'I', 'ATT':'I', 'ATG':'M',
@@ -147,7 +148,7 @@ def print_error(message, **kwargs):
     :func:`textwrap.dedent` and uses it to print an error message to
     ``sys.stderr``.
     """
-    print("\nERROR: " + dedent(message.format(**kwargs)).lstrip("\n")+"\n", file = sys.stderr) 
+    print("\nERROR: " + textwrap.dedent(message.format(**kwargs)).lstrip("\n")+"\n", file = sys.stderr) 
 
 def run_shell_command(cmd, raise_errors = False, extra_env = None):
     """
