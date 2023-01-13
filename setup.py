@@ -8,7 +8,8 @@ MOD_NAME = "CoPI"
 
 DESCRIPTION  = f'''
 Counting Peptide Inserts (CoPI) quantify Peptide Variants for Protein Engineering. 
-Options include to Collapse variants with low counts.'''
+Options include to Collapse variants with low counts.
+'''
 
 here = path.abspath(path.dirname(__file__))
 
