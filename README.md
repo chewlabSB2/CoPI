@@ -58,8 +58,3 @@ Expected Output
 6. Plot of the Insertion Distribution
 7. Plot of the in-frame Amino Acid Distribtuion
 8. Fastp output (If Fastp is available)
-
-Issues Faced
-------------
-Keyword Error 48
-Overloaded RAM
