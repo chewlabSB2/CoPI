@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+## Author : Irfan
+
 import gzip
 from itertools import zip_longest
 from CoPI.arguments import *
@@ -14,6 +16,9 @@ FORMAT = '%(asctime)s - %(module)-16s - %(levelname)s - %(message)s'
 
 class Variant():
     def __init__(self, aa):
+        '''
+        Variant Class
+        '''
         self.aa_seq = aa
         self.aa_len = len(aa)
         self.tot_c = 0
