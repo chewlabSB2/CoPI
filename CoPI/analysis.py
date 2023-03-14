@@ -1,5 +1,7 @@
 #!/usr/bin/env python3
 
+## Author : Irfan
+
 import gzip
 from itertools import zip_longest
 from CoPI.arguments import *
